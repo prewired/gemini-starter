@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gemini image starter</title>
+	</head>
+	<body>
+		<form id="form">
+			<input type="file" name="image" accept="image/*" capture="user" required />
+			<input type="submit" />
+		</form>
+		<p id="response"></p>
+
+		<script>
+			const form = document.getElementById("form");
+
+			form.onsubmit = async event => {
+				event.preventDefault();
+
+				// Read the contents of the form
+				const formData = new FormData(form);
+				
+				try {
+					// Post the form contents to our server
+					const response = await fetch("/askgemini", {
+						method: "POST",
+						body: formData
+					});
+	
+					// Receive the server's response and populate the HTML
+					const responseJSON = await response.json();
+					document.getElementById("response").innerText = responseJSON.answer;
+				}
+				catch (error) {
+					console.error("Error: ", error);
+					document.getElementById("response").innerText = "Error: " + error;
+				}
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "gemini-starter",
+  "version": "1.0.0",
+  "description": "Basic starter for uploading images to the Gemini API",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "type": "module",
+  "author": "Prewired",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.10.0",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.10"
+  }
+}
